@@ -1,39 +1,28 @@
-# Pomodoro Video - Flutter Project
+name: pomodoro_app
+description: تطبيق Pomodoro احترافي مع خلفية فيديو وإشعارات
+publish_to: 'none' # لمنع النشر على pub.dev
 
-ملف مشروع Flutter لتطبيق Pomodoro احترافي مع هذه الميزات:
-- خلفية فيديو: تحميل ملف من الجهاز أو إدخال رابط فيديو (network).
-- إعدادات مدة العمل، الاستراحة القصيرة والطويلة، ودورات قبل الاستراحة الطويلة.
-- إشعارات محلية وصوت إشعار باستخدام `flutter_local_notifications`.
-- حفظ الإعدادات باستخدام `shared_preferences`.
-- أمثلة لاختصارات التشغيل/إيقاف وإعادة التعيين.
-- ملف GitHub Actions جاهز لبناء APK تلقائيًا.
+version: 1.0.0+1
 
----
+environment:
+  sdk: ">=2.19.0 <3.0.0"
+  flutter: ">=3.0.0"
 
-## خطوات لتثبيت وبناء APK محليًا (على جهازك)
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.2
+  shared_preferences: ^2.1.1
+  flutter_local_notifications: ^13.0.0
+  video_player: ^2.6.0
 
-1. ثبّت Flutter (اتبع https://flutter.dev).
-2. افتح سطر الأوامر في مجلد المشروع:
-   ```bash
-   cd pomodoro_video_project
-   flutter pub get
-   flutter build apk --release
-   ```
-   سيُنتِج الملف `build/app/outputs/flutter-apk/app-release.apk`
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.1
 
-3. أو للتجربة السريعة أثناء التطوير:
-   ```bash
-   flutter run
-   ```
+flutter:
+  uses-material-design: true
 
----
-
-## بناء APK تلقائيًا باستخدام GitHub Actions
-يوجد ملف `.github/workflows/build_apk.yml` مرفق. قم بتحميل المشروع على مستودع GitHub وقم بتفعيل Actions لبناء APK تلقائيًا عند كل `push`.
-
----
-
-## ملاحظات مهمة
-- لا يمكنني بناء APK داخل هذا البيئة نيابةً عنك (يتطلب Android SDK وبيئة بناء). ما فعلته هنا هو تجهيز مشروع كامل يمكنك تحميله وبناؤه محليًا أو عبر GitHub Actions.
-- إذا تبي، أقدملك ملف APK مبنيًا — لكني سأحتاج منك رفع مفتاح التوقيع أو أن أستخدم خدمة بناء خارجية (أرشِح GitHub Actions أو Codemagic) — أخبرني إذا تبي أشرح خطوة بخطوة لرفع المشروع على GitHub وتشغيل البناء الأتوماتيكي.
-
+  assets:
+    - assets/video.mp4
