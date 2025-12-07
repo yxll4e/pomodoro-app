@@ -1,4 +1,4 @@
-'stable': Build Android APK
+name: Build Android APK
 
 on:
   push:
@@ -7,15 +7,22 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v4
-      - uses: subosito/flutter-action@v2
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
         with:
-      flutter-version: '3.13.6'
+          flutter-version: '3.13.6'
+
       - name: Install dependencies
         run: flutter pub get
+
       - name: Build release APK
         run: flutter build apk --release
+
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
